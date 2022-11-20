@@ -1,8 +1,10 @@
+properties([parameters([string(name: 'BOT_IMAGE_NAME', trim: true)])])
+
 pipeline {
     agent {
         docker {
-            // TODO build & push your Jenkins agent image, place the URL here
-            image '352708296901.dkr.ecr.us-east-1.amazonaws.com/shay-polybot-jenkins-agent:1'
+            label 'polybot_cicd_general'
+            image '352708296901.dkr.ecr.us-east-1.amazonaws.com/shay-polybot-jenkins-agent:2'
             args  '--user root -v /var/run/docker.sock:/var/run/docker.sock'
         }
     }
@@ -14,6 +16,7 @@ pipeline {
     parameters {
         string(name: 'BOT_IMAGE_NAME')
     }
+
 
     stages {
         stage('Bot Deploy') {
