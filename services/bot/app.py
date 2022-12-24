@@ -19,6 +19,7 @@ class Bot:
         logger.info(f'{self.__class__.__name__} is up and listening to new messages....')
         self.updater.idle()
 
+
     def _message_handler(self, update, context):
         """Main messages handler"""
         self.send_text(update, f'Your original message: {update.message.text}')
@@ -78,4 +79,6 @@ if __name__ == '__main__':
     workers_queue = sqs.get_queue_by_name(QueueName=config.get('bot_to_worker_queue_name'))
 
     my_bot = YoutubeObjectDetectBot(_token)
+    my_bot.send_text(my_bot.updater, "greetings :-)")
+
     my_bot.start()
