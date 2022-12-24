@@ -77,6 +77,8 @@ if __name__ == '__main__':
 
     sqs = boto3.resource('sqs', region_name=config.get('aws_region'))
     workers_queue = sqs.get_queue_by_name(QueueName=config.get('bot_to_worker_queue_name'))
+
     my_bot = YoutubeObjectDetectBot(_token)
     my_bot.send_text(my_bot.updater, "greetings :-)")
+
     my_bot.start()
