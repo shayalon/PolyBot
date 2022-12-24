@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Unittest Worker') {
             steps {
-                echo 'testing worker...'
+                echo 'testing worker...2'
             }
         }
         stage('Linting test') {
